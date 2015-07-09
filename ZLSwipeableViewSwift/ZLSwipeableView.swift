@@ -33,14 +33,14 @@ public struct ZLSwipeableViewDirection : RawOptionSetType, Printable {
         return self(rawValue: 0)
     }
 
-    static var None: ZLSwipeableViewDirection       { return self(rawValue: 0b0000) }
-    static var Left: ZLSwipeableViewDirection       { return self(rawValue: 0b0001) }
-    static var Right: ZLSwipeableViewDirection      { return self(rawValue: 0b0010) }
-    static var Up: ZLSwipeableViewDirection         { return self(rawValue: 0b0100) }
-    static var Down: ZLSwipeableViewDirection       { return self(rawValue: 0b1000) }
-    static var Horizontal: ZLSwipeableViewDirection { return Left | Right }
-    static var Vertical: ZLSwipeableViewDirection   { return Up | Down }
-    static var All: ZLSwipeableViewDirection        { return Horizontal | Vertical }
+    static public var None: ZLSwipeableViewDirection       { return self(rawValue: 0b0000) }
+    static public var Left: ZLSwipeableViewDirection       { return self(rawValue: 0b0001) }
+    static public var Right: ZLSwipeableViewDirection      { return self(rawValue: 0b0010) }
+    static public var Up: ZLSwipeableViewDirection         { return self(rawValue: 0b0100) }
+    static public var Down: ZLSwipeableViewDirection       { return self(rawValue: 0b1000) }
+    static public var Horizontal: ZLSwipeableViewDirection { return Left | Right }
+    static public var Vertical: ZLSwipeableViewDirection   { return Up | Down }
+    static public var All: ZLSwipeableViewDirection        { return Horizontal | Vertical }
     
     static func fromPoint(point: CGPoint) -> ZLSwipeableViewDirection {
         switch (point.x, point.y) {
@@ -167,7 +167,7 @@ public class ZLSwipeableView: UIView {
     }
     
     // MARK: View Management
-    private var views = [UIView]()
+    public private(set) var views = [UIView]()
     
     public func topView() -> UIView? {
         return views.first
