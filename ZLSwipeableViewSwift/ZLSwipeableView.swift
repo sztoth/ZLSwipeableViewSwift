@@ -121,6 +121,7 @@ public class ZLSwipeableView: UIView {
     public var didEnd: ((view: UIView, atLocation: CGPoint) -> ())?
     public var didSwipe: ((view: UIView, inDirection: ZLSwipeableViewDirection, directionVector: CGVector) -> ())?
     public var didCancel: ((view: UIView) -> ())?
+    public var didAnimate: (() -> ())?
 
     // MARK: Swipe Control
     /// in percent
@@ -389,6 +390,7 @@ public class ZLSwipeableView: UIView {
         if pushBehaviors.count == 0 {
             timer.invalidate()
             self.timer = nil
+            self.didAnimate?()
         }
     }
     private func cleanUpWithPredicate(predicate: (UIView) -> Bool) -> [Int] {
